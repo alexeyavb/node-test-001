@@ -2,7 +2,7 @@
 const console = require('console');
 const bodyparser = require('body-parser');
 const express = require('express');
-const routes = require('./routes/routes');
+const routes = require('./routes/routes.js');
 
 const port = 3001;
 const app = express();
@@ -14,8 +14,12 @@ app.use(bodyparser.urlencoded({
 
 routes(app);
 
+// eslint-disable-next-line consistent-return
 const server = app.listen(port, (error) => {
-  if (error) return console.log(`Error: ${error}`);
   console.log(`Server listening on port ${server.address().port}`);
+  if (error) {
+    console.log('Error');
+  }
 });
+
 // end of file.
